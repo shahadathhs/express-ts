@@ -1,5 +1,6 @@
 import express, { Application, NextFunction, Request, Response } from "express";
 import cors from "cors";
+import appRouter from "./app/router/router";
 
 // ** express app **
 const app: Application = express();
@@ -40,8 +41,6 @@ app.get("/", logger, (req: Request, res: Response) => {
   res.send("Hello World!");
 });
 
-app.post("/", logger, (req: Request, res: Response) => {
-  console.log(req.body);
-});
+app.use("/", appRouter);
 
-export default app;
+export default app; 
