@@ -1,9 +1,12 @@
 {
   "name": "express-ts",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "server.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc",
+    "build:dev": "tsc -w",
+    "start": "nodemon dist/server.js",
+    "start:dev": "nodemon src/server.ts"
   },
   "keywords": [],
   "author": "",
@@ -15,6 +18,7 @@
   "devDependencies": {
     "@types/express": "^5.0.0",
     "@types/node": "^22.9.0",
+    "nodemon": "^3.1.7",
     "typescript": "^5.6.3"
   }
 }
