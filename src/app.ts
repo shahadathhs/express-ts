@@ -26,7 +26,7 @@ app.use(
 );
 
 // ** middlewares **
-const logger = (req: Request, res: Response, next: NextFunction) => {
+const logger = (req: any, res: Response, next: NextFunction) => {
   console.log("Method: ", req.method);
   console.log("URL: ", req.url);
   console.log("Body: ", req.body);
@@ -39,6 +39,25 @@ const logger = (req: Request, res: Response, next: NextFunction) => {
 // ** routes **
 app.get("/", logger, (req: Request, res: Response) => {
   res.send("Hello World!");
+});
+
+// * route with error handling which reach global error handler **
+app.get("/error", (req: Request, res: Response, next: NextFunction) => {
+  try {
+    console.log(Errorr)
+  } catch (error) {
+    next(error);
+  }
+});
+
+// ** Global Error Handler **
+app.use((err: any, req: Request, res: Response, next: NextFunction) => {
+  res.status(500).send("Something went wrong!");
+});
+
+// ** Not Found Error Handler **
+app.all("*", (req: Request, res: Response) => {
+  res.status(404).send("Not Found!");
 });
 
 app.use("/", appRouter);

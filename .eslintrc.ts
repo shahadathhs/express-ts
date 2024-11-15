@@ -33,6 +33,8 @@ const config: Linter.Config = {
     // TypeScript-specific rules
     '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
     '@typescript-eslint/explicit-function-return-type': 'warn',
+    '@typescript-eslint/no-explicit-any': 'warn',
+    '@typescript-eslint/no-unused-expressions': 'warn',
 
     // SonarJS-specific rules
     'sonarjs/no-duplicate-string': 'warn',
@@ -43,7 +45,7 @@ const config: Linter.Config = {
     'security/detect-non-literal-fs-filename': 'warn',
 
     // General quality rules
-    'no-console': 'warn',
+    'no-console': 'error',
     'no-shadow': 'warn',
     'eqeqeq': 'error',
     'curly': 'error',
